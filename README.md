@@ -13,10 +13,10 @@ Before you begin, ensure you have the following installed:
 
 ### Installation
 
-1. Clone this repository or use it as a template:
+Clone this repository or use it as a template:
 
 ```bash
-git clone <repository-url>
+git clone 'https://github.com/krishnapriyama/TestTask-Dexie.JS.git'
 ```
    
 Navigate to the project directory:
