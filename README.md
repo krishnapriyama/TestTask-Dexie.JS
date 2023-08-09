@@ -15,9 +15,9 @@ Before you begin, ensure you have the following installed:
 
 1. Clone this repository or use it as a template:
 
-   ```bash
-   git clone <repository-url>
-   ```
+```bash
+git clone <repository-url>
+```
    
 Navigate to the project directory:
 ```bash
