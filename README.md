@@ -1,27 +1,73 @@
-# React + TypeScript + Vite
+# Test Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a starter template for creating a React application using Vite and TypeScript.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## Expanding the ESLint configuration
+Before you begin, ensure you have the following installed:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Node.js](https://nodejs.org/) (>= 14.x)
+- [npm](https://www.npmjs.com/) (>= 7.x) or [Yarn](https://yarnpkg.com/) (>= 1.22.x)
 
-- Configure the top-level `parserOptions` property like this:
+### Installation
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+Clone this repository or use it as a template:
+
+```bash
+git clone 'https://github.com/krishnapriyama/TestTask-Dexie.JS.git'
+```
+   
+Navigate to the project directory:
+```bash
+cd react-vite-ts-starter
+```
+Install dependencies:
+Using npm:
+```bash
+npm install
+```
+Or using Yarn:
+```bash
+yarn install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+To start the development server, run:
+Using npm:
+```bash
+npm run dev
+```
+Or using Yarn:
+```bash
+yarn dev
+```
+
+
+## Features
+React for building user interfaces
+Vite for fast development and building
+TypeScript for type-safe code
+Eslint and Prettier for code linting and formatting
+Customize and extend the configuration as needed
+
+- Folder Structure
+```
+/
+├── public/                # Public assets
+├── src/                   # Application source code
+│   ├── components/        # React components
+│   ├── App.tsx            # Main application component
+│   ├── index.tsx          # Entry point
+├── .eslintrc.js           # ESLint configuration
+├── .prettierrc.js         # Prettier configuration
+├── tsconfig.json          # TypeScript configuration
+├── vite.config.js         # Vite configuration
+├── package.json           # Project dependencies and scripts
+└── README.md              # This file
+```
+License
+This project is licensed under the MIT License.
+```
+Remember to replace `<repository-url>` with the actual URL of your repository if you're using version control. Feel free to modify and enhance this template to match your project's specific needs.
+```
