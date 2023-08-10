@@ -13,13 +13,22 @@ interface User {
 }
 
 const App: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [allUsers, setAllUsers] = useState<User[]>([]); // All fetched users
+  const [displayedUsers, setDisplayedUsers] = useState<User[]>([]); // Users displayed in the UI
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     fetchRandomUsers();
   }, []);
+
+  useEffect(() => {
+    const storedDisplayedUsers = JSON.parse(localStorage.getItem('displayedUsers') || '[]');
+    setDisplayedUsers(storedDisplayedUsers);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('displayedUsers', JSON.stringify(displayedUsers));
+  }, [displayedUsers]);
 
   const fetchRandomUsers = async () => {
     try {
@@ -28,10 +37,12 @@ const App: React.FC = () => {
       const userData: User[] = data.results.map((user: any) => ({
         name: `${user.name.first} ${user.name.last}`,
         picture: user.picture.large,
+        id: user.login.uuid,
       }));
       await db.users.bulkPut(userData);
       const storedUsers = await db.users.toArray();
-      setUsers(storedUsers);
+      setAllUsers(storedUsers);
+      setDisplayedUsers(storedUsers);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -40,13 +51,13 @@ const App: React.FC = () => {
 
   const handleDelete = async (userId: number) => {
     await db.users.delete(userId);
-    const storedUsers = await db.users.toArray();
-    setUsers(storedUsers);
+    const updatedDisplayedUsers = displayedUsers.filter(user => user.id !== userId);
+    setDisplayedUsers(updatedDisplayedUsers);
   };
 
-  const handleRefresh = () => {
+  const handleRefresh = async () => {
     setLoading(true);
-    fetchRandomUsers();
+    await fetchRandomUsers();
   };
 
   return (
@@ -61,11 +72,11 @@ const App: React.FC = () => {
             <Button className="refresh-button" variant="outlined" onClick={handleRefresh}>
               Refresh
             </Button>
-            <div className="total-count">Total: {users.length}</div>
+            <div className="total-count">Total: {displayedUsers.length}</div>
           </div>
 
           <div className="card-list">
-            {users.map((user) => (
+            {displayedUsers.map((user) => (
               <Card key={user.id} className="user-card">
                 <CardContent>
                   <img src={user.picture} alt="User" className="user-picture" />
